@@ -10,7 +10,7 @@ const navItems = {
   '/portfolio': {
     name: 'portfolio',
   },
-  '/resume': {
+  '/resume.pdf': {
     name: 'resume',
   },
   'https://github.com/okwalerie': {

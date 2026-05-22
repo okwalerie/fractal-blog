@@ -37,7 +37,7 @@ export default function Page() {
           <li>
             a{' '}
             <a
-              href="/resume"
+              href="/resume.pdf"
               className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"
             >
               resume
