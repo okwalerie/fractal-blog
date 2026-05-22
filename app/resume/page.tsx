@@ -40,7 +40,7 @@ export default function Page() {
       </ul>
       <div className="mb-6">
         <a
-          href="/valerie-kim-resume.pdf"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center py-1.5 px-3 text-sm font-medium rounded-md border border-neutral-300 text-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-800 hover:bg-neutral-100"

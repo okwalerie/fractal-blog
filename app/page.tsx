@@ -44,7 +44,7 @@ export default function Page() {
             </a>{' '}
             (plus a{' '}
             <a
-              href="/valerie-kim-resume.pdf"
+              href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"

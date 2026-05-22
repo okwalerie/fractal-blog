@@ -1,0 +1,180 @@
+#+title: LLMs and Structure
+#+descriptionx: rstarst
+#+date: <2025-12-12 Fri>
+#+author: Valerie Kim
+
+
+
+
+1. *hook*: "what's the simplest math humans can do that llms can't?" (or similar)
+2. *the system*: LoF in <200 words, with visual
+3. *the failure modes*: concrete examples, accuracy curves
+4. *why this matters*: connects to broader questions about abstraction, rule-following
+5. *what i'm building*: the eval pipeline
+6. *call to action*: "feedback welcome, code here"
+
+   
+/title:/  *bracket fonts break chain-of-thought reasoning*
+
+/structure:/
+
+1.  /the setup:/ lof is a minimal recursive system. human eval: trivial. model eval: looks easy.
+2.  /the sting:/ show the three results above. balanced vs mismatched. 96% -> 40%. that's a 56-point drop from swapping =()= for =[]= without changing the logic.
+3.  /the mechanism:/ tokenization. but not in the "strawberry" trivia sense. in the "the model's topology is not isomorphic to the problem space" sense. you have proof that models are doing token-string matching, not symbolic reduction.
+4.  /the implication:/ current evals (math, code, mmlu) are all /syntactically stable/. if you change the syntax, the model fails. this means any "reasoning" we see is brittle and overfit to the training distribution's surface form. this is directly relevant to encoded reasoning detection and steganography (poseidon) and eval infra (anthropic).
+5.  /the ask:/ "i'm building a benchmark suite that tests this directly. hiring for 2025."
+
+
+
+
+Anticipatory Rebuttals
+- But space introduces priors.
+  - Yes, but no.
+- LoF is boolean algebra
+  - yes.
+
+
+* first thing's first: try it Yourself
+little javascript toy with some examples.
+Only add a little drawing marker / paint + reset button, some levels, and an answer panel.
+
+"What is the final result?"
+
+* spoiler shield + some charts 
+
+* What are we looking at? LoF in 200 words
+
+* What do models see in ARC?
+- Comparative example
+- Chart
+
+* The Setup
+
+* Can you smell what I'm cooking?
+<visual examples>
+
+* Model Failure Modes 
+* Charts
+* COMMENT :ARCHIVE:
+** Symbols vs icons
+
+A symbol is arbitrary: it means whatever we all agree it means.
+
+- The digit =3= doesn’t *look* like three of anything.
+- The English word =tree= doesn’t resemble an actual tree.
+- The unit =L= doesn’t tell you how big a liter feels in the world.
+
+An icon, by contrast, resembles what it stands for. It carries its own explanation inside it.
+
+- A stick figure of a person is an icon for “person”.
+- A pie chart slice that takes up half the circle is an icon for “one-half”.
+- A little drawing of rocks tumbling down a slope is an icon for “falling rocks ahead”.
+
+You can see a whole *spectrum* of “three-ness” in this classic example from iconic math, from raw marks and tallies through words in different languages to more abstract notations:
+
+[[img:assets/opt/types-of-3__bricken.webp][A spectrum of ways to write “3”, from iconic tallies to symbolic set notation.]]
+
+And you can see a similar spectrum for “house”:
+
+[[img:assets/opt/house-to-house__bricken.webp][From the word “house” to a stick-house doodle to floor plans and photos: a spectrum from symbol to icon to the actual thing.]]
+
+At the far end of the spectrum are marks that almost *are* the things they stand for. Long before writing systems, people in places like Cueva de las Manos in Argentina were literally tracing their hands on rock walls:
+[[img:assets/opt/cueva-de-las-manos__wikipedia.webp][Cueva de las Manos, Santa Cruz, Argentina – outlines of many human hands on a rock wall.]]
+
+In that sense, /iconicity is the font from which shared meaning must have originated/: before we could agree that an arbitrary squiggle meant “tree” or “three”, we had to point, draw, and gesture at marks that actually *looked* like the things we had in mind.
+
+There’s a whole spectrum between pure symbol and pure icon. What I’m calling *iconic arithmetic* is about pushing more of our important quantities toward the iconic end of that spectrum.
+
+(If you want to see some lovely examples of this spectrum applied to math itself, check out [[https://iconicmath.com][iconicmath.com]] — they have diagrams where the “notation” for a fraction looks like the fraction.)
+
+** Why iconicity feels self-evident
+
+Icons aren’t just “easier to understand”. They’re *self-evident* in a way that symbols almost never are.
+
+When you see:
+
+- =7/8= on a page, you have to *remember* what it means and how big that is.
+- a pie that’s almost completely filled, you can *see* what it means, even if you don’t know the words “seven eighths”.
+
+The second one gives you built-in sanity checks:
+
+- If someone calls that “one quarter”, it looks obviously wrong.
+- If you try to add three of those pies and get something smaller, it looks obviously wrong.
+
+Iconic representations keep you from wandering too far into nonsense, because the nonsense stops looking like the picture.
+
+** Radiation as an iconic quantity
+
+Randall Munroe’s [[https://xkcd.com/radiation/][Radiation Dose Chart]] is one of my favorite examples of iconicity done right.
+
+Radiation dose is one of those quantities that is:
+
+- Hard to intuit from numbers alone.
+- Genuinely important for public decisions.
+- Constantly misrepresented.
+
+The chart lays out common radiation exposures on a single visual scale: background radiation, a dental X-ray, a CT scan, a flight, Chernobyl, and so on. You see the doses as bars and clusters, not just as microsievert statistics.
+
+[[img:assets/opt/radiation__xkcd.webp][Radiation Dose Chart by Randall Munroe: a visual scale of radiation exposures.]]
+
+That chart does three important things:
+
+1. It gives you *anchors* — familiar experiences to hang numbers on.  
+2. It shows *relative scale* — how many “X-rays” fit inside “CT scan” or “Chernobyl”.  
+3. It builds in *sanity checks* — if someone claims that a banana gives you more radiation than a CT scan, you instantly know something’s off.
+
+After you’ve internalized that picture, lots of arguments about radiation become much harder to get completely wrong. You’ve moved from a symbolic grasp of the numbers to an iconic one.
+
+** The cost of non-iconic numbers
+
+Contrast that with a recent example from AI and water usage.
+
+A government document in Chile appears to have labeled water consumption numbers as “liters” when they were actually “cubic meters” — off by a factor of 1,000. A bestselling AI book used those numbers in a comparison between a proposed Google data center and the city’s water consumption.
+
+Those figures then passed through:
+
+- a government agency,
+- a journalist and editor,
+- a fact-checking process,
+- tens of thousands of readers,
+
+before an outside analyst ran a sanity check and noticed the scale was wildly off.
+
+Everyone involved was smart. There was real effort and care. But at no point did the quantity become *visibly wrong* in the way that a bad pie chart, or a bad radiation graph, would.
+
+If there had been a simple “water usage chart” in the book — think “Radiation Dose Chart, but for liters per year” — a 1,000× mistake would have produced a grotesquely huge or tiny bar. It would have looked silly on sight.
+
+That’s the cost of non-iconic numbers: we’re flying blind on scale, even when the underlying data is straightforward.
+
+** People are craving iconic arithmetic
+
+You can see the hunger for this everywhere once you start looking.
+
+- People genuinely *want* to play simple arithmetic puzzle games (see the wildly popular, misleading ads for mobile games that promise “just do the math pipes!”).  
+- XKCD-style “explainers” go viral because they finally give people a way to *picture* quantities that were previously just scary numbers.  
+- When someone posts a good, honest “scale of X” graphic — for emissions, for wealth, for hospital capacity — it spreads far beyond the usual numeracy nerds.
+
+These are all small glimpses of iconic arithmetic: numbers that come with their own sense of scale baked in.
+
+** Where I want to go with this
+
+I think we need a lot more of this:
+
+- Standard, shared “scale charts” for water, energy, risk, and money, the way we now have for radiation.
+- Math notations and teaching tools where the marks on the page *look like* the quantities they describe, not just their names.
+- Interfaces — including the ones I’m building — where big mistakes in scale are hard to make because they look wrong the moment they appear on screen.
+
+Here’s a tiny example from a prototype I’ve been working on, a little toy world called *House of Bao*:
+
+[[img:assets/opt/house-of-bao-1.webp][Screenshot of House of Bao: a small grid world where quantities are visible objects, not just numbers.]]
+
+It’s not a full game yet, just a basic demonstration of some “axioms” of iconic arithmetic: things exist as piles and tokens on a grid; operations move and combine them in ways you can see. The whole point is that you shouldn’t need to read a HUD or a spreadsheet to tell what’s happening — your eyes should be enough.
+
+This post is just a sketch. In future pieces, I want to dig into:
+
+- more examples of iconic arithmetic from projects like [[https://iconicmath.com][iconicmath.com]],  
+- concrete design patterns for self-evident quantities, and  
+- some of the little prototypes I’m working on that try to embody these ideas.
+
+For now, I’ll leave you with this: the revolution will not be symbolized. If we want people to reason clearly about the world, we have to give them representations that make the important quantities impossible to misunderstand.
+
