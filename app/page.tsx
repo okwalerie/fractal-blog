@@ -56,7 +56,7 @@ export default function Page() {
           <li>
             and my{' '}
             <a
-              href="https://github.com/weavermarquez"
+              href="https://github.com/okwalerie"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"
@@ -65,7 +65,7 @@ export default function Page() {
             </a>{' '}
             for code and experiments, plus{' '}
             <a
-              href="https://x.com/ForecastFire"
+              href="https://x.com/okwalerie"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"

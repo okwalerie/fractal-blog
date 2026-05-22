@@ -13,10 +13,10 @@ const navItems = {
   '/resume': {
     name: 'resume',
   },
-  'https://github.com/weavermarquez': {
+  'https://github.com/okwalerie': {
     name: 'github',
   },
-  'https://x.com/ForecastFire': {
+  'https://x.com/okwalerie': {
     name: 'twitter',
   },
 }

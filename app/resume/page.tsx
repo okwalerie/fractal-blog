@@ -59,7 +59,7 @@ export default function Page() {
         </a>{" "}
         and{" "}
         <a
-          href="https://github.com/weavermarquez"
+          href="https://github.com/okwalerie"
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-4 decoration-neutral-400 dark:hover:decoration-neutral-200 hover:decoration-neutral-800"
