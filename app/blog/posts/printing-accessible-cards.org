@@ -134,7 +134,7 @@ Here's what I did, in an [imgur album](https://imgur.com/a/y7oWhfE).
 
 ## Digital Play
 
-Play on [jinteki.net](https://jinteki.net) on Firefox using the [Cyberfeeder](https://addons.mozilla.org/en-CA/firefox/addon/cyberfeeder/) plugin. Import [these settings](https://gist.github.com/weavermarquez/d5126684cb567370950889cc14b6d5d1) by downloading the file. At the bottom of the "Settings" tab in the Cyberfeeder sidebar, you can select and import said file.
+Play on [jinteki.net](https://jinteki.net) on Firefox using the [Cyberfeeder](https://addons.mozilla.org/en-CA/firefox/addon/cyberfeeder/) plugin. Import [these settings](https://gist.github.com/okwalerie/d5126684cb567370950889cc14b6d5d1) by downloading the file. At the bottom of the "Settings" tab in the Cyberfeeder sidebar, you can select and import said file.
 
 Previews:
 
