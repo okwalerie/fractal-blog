@@ -1,0 +1,35 @@
+name: Deploy production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: valeriekim-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # This repository-scoped runner lives only on the production host.
+    runs-on: [self-hosted, Linux, X64, waler-production]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build production image
+        run: podman build --pull=never --tag localhost/valeriekim-blog:latest --file Containerfile .
+
+      - name: Restart local Quadlet service
+        run: |
+          systemctl --user daemon-reload
+          systemctl --user restart valeriekim-blog.service
+          systemctl --user is-active --quiet valeriekim-blog.service
+
+      - name: Verify deployed application
+        run: |
+          curl --fail --silent --show-error http://127.0.0.1:8096/blog/printing-accessible-cards >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:8096/blog/revolution-will-not-be-symbolized >/dev/null
