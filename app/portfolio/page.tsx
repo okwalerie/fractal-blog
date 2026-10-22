@@ -27,7 +27,7 @@ export default function Page() {
         </li>
         <li>
           <a
-            href="https://house.valeriekim.ca"
+            href="https://house-of-bao.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"
@@ -47,7 +47,7 @@ export default function Page() {
         </li>
         <li>
           <a
-            href="https://math.valeriekim.ca"
+            href="https://james-algebra.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"

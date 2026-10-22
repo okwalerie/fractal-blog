@@ -22,7 +22,7 @@ export default function Footer() {
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            href="/rss"
+            href="/rss.xml"
           >
             <ArrowIcon />
             <p className="ml-2 h-7">rss</p>
