@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Node $(node --version), npm $(npm --version)"
+time npm ci --no-audit --no-fund
