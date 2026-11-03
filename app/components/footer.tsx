@@ -5,6 +5,7 @@ function ArrowIcon() {
       height="12"
       viewBox="0 0 12 12"
       fill="none"
+      aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -37,6 +38,12 @@ export default function Footer() {
           >
             <ArrowIcon />
             <p className="ml-2 h-7">twitter</p>
+          </a>
+        </li>
+        <li>
+          <a className="flex items-center" href="mailto:valerie.kim.dev@gmail.com">
+            <ArrowIcon />
+            <p className="ml-2 h-7">contact</p>
           </a>
         </li>
       </ul>

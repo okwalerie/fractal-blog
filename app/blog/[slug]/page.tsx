@@ -28,12 +28,13 @@ export function generateMetadata({ params }) {
   return {
     title,
     description,
+    alternates: { canonical: `/blog/${post.slug}/` },
     openGraph: {
       title,
       description,
       type: 'article',
       publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: `${baseUrl}/blog/${post.slug}/`,
       images: [
         {
           url: ogImage,
@@ -72,10 +73,11 @@ export default function Blog({ params }) {
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `${baseUrl}/blog/${post.slug}/og.png`,
-            url: `${baseUrl}/blog/${post.slug}`,
+            url: `${baseUrl}/blog/${post.slug}/`,
             author: {
               '@type': 'Person',
-              name: 'My Portfolio',
+              '@id': `${baseUrl}/#person`,
+              name: 'Valerie Kim',
             },
           }),
         }}
@@ -91,6 +93,9 @@ export default function Blog({ params }) {
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
+      <p className="mt-8">
+        <a href="/portfolio" className="underline underline-offset-4">More projects and experiments</a>
+      </p>
     </section>
   )
 }

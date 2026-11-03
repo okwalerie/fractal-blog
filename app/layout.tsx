@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   },
   description:
     'Valerie Kim — software developer and educator building tools and games that make complex systems feel self-evident.',
+  alternates: {
+    canonical: '/',
+    types: { 'application/rss+xml': '/rss.xml' },
+  },
   openGraph: {
     title: 'Valerie Kim',
     description:
@@ -22,7 +26,9 @@ export const metadata: Metadata = {
     siteName: 'Valerie Kim',
     locale: 'en_US',
     type: 'website',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Valerie Kim — tools, games, and self-evident systems' }],
   },
+  twitter: { card: 'summary_large_image' },
   robots: {
     index: true,
     follow: true,
@@ -53,6 +59,18 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            '@id': `${baseUrl}/#person`,
+            name: 'Valerie Kim',
+            url: baseUrl,
+            jobTitle: 'Software developer and educator',
+            sameAs: ['https://github.com/okwalerie', 'https://x.com/okwalerie'],
+          }) }}
+        />
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}

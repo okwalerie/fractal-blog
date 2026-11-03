@@ -9,16 +9,36 @@ export default function Page() {
       <p className="mb-4">
         I build tools and games that make complicated things feel
         self-evident &mdash; especially around math, accessibility, and how
-        people actually think.
+        people actually think. That includes AI agents: how to tell what
+        they did, whether it worked, and what breaks next.
       </p>
       <p className="mb-4 text-neutral-700 dark:text-neutral-300">
         I&apos;ve worked across public service, non-profits, and education:
         shipping case-management features at Environment and Climate Change
         Canada, standing up infrastructure for a food-security charity, and
-        running a kids&apos; game-dev academy. Lately I&apos;ve been deep in
+        running a kids&apos; game-dev academy. I&apos;m also deep in
         &quot;iconic arithmetic&quot; &mdash; finding ways to make quantities
         and code behave more like good diagrams than opaque symbols.
       </p>
+      <section className="my-8" aria-labelledby="exploring">
+        <h2 id="exploring" className="mb-3 text-xl font-semibold tracking-tight">
+          On the workbench
+        </h2>
+        <ul className="list-disc ml-5 space-y-3">
+          <li>
+            <a href="/portfolio#rama" className="underline underline-offset-4">Rama &amp; Agent-o-rama</a>
+            {' '}&mdash; stateful agents, research tools, and a backend-building harness.
+          </li>
+          <li>
+            <a href="/portfolio#distinction-bench" className="underline underline-offset-4">DistinctionBench</a>
+            {' '}&mdash; asking LLMs to reason with little more than brackets.
+          </li>
+          <li>
+            <a href="https://house.valeriekim.ca" className="underline underline-offset-4">Play House of Bao</a>
+            {' '}&mdash; a toy world where arithmetic is something you can move around.
+          </li>
+        </ul>
+      </section>
       <div className="mb-6 space-y-1 text-neutral-700 dark:text-neutral-300">
         <p>
           You can find:
@@ -35,23 +55,13 @@ export default function Page() {
             of projects and write-ups,
           </li>
           <li>
-            a{' '}
+            my{' '}
             <a
               href="/resume.pdf"
               className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"
             >
-              resume
-            </a>{' '}
-            (plus a{' '}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-800 dark:hover:decoration-neutral-200"
-            >
-              downloadable PDF
-            </a>
-            ),
+              résumé (PDF)
+            </a>,
           </li>
           <li>
             and my{' '}
@@ -76,7 +86,12 @@ export default function Page() {
           </li>
         </ul>
       </div>
+      <p className="mb-6">
+        Want to talk about a project or a role?{' '}
+        <a href="mailto:valerie.kim.dev@gmail.com" className="underline underline-offset-4">Email me</a>.
+      </p>
       <div className="my-8">
+        <h2 className="mb-4 text-xl font-semibold tracking-tight">Writing</h2>
         <BlogPosts />
       </div>
     </section>

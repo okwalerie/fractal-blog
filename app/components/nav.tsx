@@ -9,13 +9,16 @@ const navItems = {
     name: 'portfolio',
   },
   '/resume.pdf': {
-    name: 'resume',
+    name: 'résumé (PDF)',
   },
   'https://github.com/okwalerie': {
     name: 'github',
   },
   'https://x.com/okwalerie': {
     name: 'twitter',
+  },
+  'mailto:valerie.kim.dev@gmail.com': {
+    name: 'contact',
   },
 }
 
@@ -24,10 +27,11 @@ export function Navbar() {
     <aside className="-ml-[8px] mb-16 tracking-tight">
       <div className="lg:sticky lg:top-20">
         <nav
+          aria-label="Main navigation"
           className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
           id="nav"
         >
-          <div className="flex flex-row space-x-0 pr-10">
+          <div className="flex flex-row flex-wrap space-x-0">
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
                 <a

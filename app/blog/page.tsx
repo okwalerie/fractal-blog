@@ -2,7 +2,14 @@ import { BlogPosts } from 'app/components/posts'
 
 export const metadata = {
   title: 'Blog',
-  description: 'Read my blog.',
+  description: 'Notes by Valerie Kim on iconic arithmetic, accessibility, and making complicated things feel self-evident.',
+  alternates: { canonical: '/blog/' },
+  openGraph: {
+    title: 'Blog | Valerie Kim',
+    description: 'Notes on iconic arithmetic, accessibility, and making complicated things feel self-evident.',
+    url: '/blog/',
+    images: ['/og.png'],
+  },
 }
 
 export default function Page() {
